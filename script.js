@@ -15,17 +15,24 @@ envelope.addEventListener("click", () => {
     envelope.style.display = "none";
     letter.style.display = "flex";
 
-    setTimeout( () => {
-        document.querySelector(".letter-window").classList.add("open");
-    },50);
+    setTimeout(() => {
+        const letterWindow = document.querySelector(".letter-window");
+        letterWindow.classList.add("open");
+
+        // Small screen scale tweak
+        if (window.innerWidth <= 480) {
+            letterWindow.style.transform = "scale(1)";
+        }
+    }, 50);
 });
+
 
 // Logic to move the NO btn
 
-noBtn.addEventListener("mouseover", () => {
-    const min = 200;
-    const max = 200;
-
+// Move NO button on hover or touch
+function moveNoBtn() {
+    const min = 150; // mobile me thoda kam distance
+    const max = 250;
     const distance = Math.random() * (max - min) + min;
     const angle = Math.random() * Math.PI * 2;
 
@@ -34,7 +41,11 @@ noBtn.addEventListener("mouseover", () => {
 
     noBtn.style.transition = "transform 0.3s ease";
     noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
-});
+}
+
+noBtn.addEventListener("mouseover", moveNoBtn);
+noBtn.addEventListener("touchstart", moveNoBtn);
+
 
 // Logic to make YES btn to grow
 

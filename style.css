@@ -1,4 +1,4 @@
-
+/* ===== Global Styles ===== */
 body {
     margin: 0;
     height: 100vh;
@@ -6,46 +6,44 @@ body {
     justify-content: center;
     align-items: center;
     background-image: url("heart-bg.jpg");
+    background-size: cover;
+    background-position: center;
     font-family: "Pixelify Sans", sans-serif;
 }
 
-/* Envelope Screen */
+/* ===== Envelope Screen ===== */
 #envelope-container {
     text-align: center;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 @keyframes pulse {
-    0% {
-        transform:scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
-#envelope{
+#envelope {
     width: 200px;
+    max-width: 50vw;
     animation: pulse 1.5s infinite;
     cursor: pointer;
 }
 
-#letter-container{
+/* ===== Letter Screen ===== */
+#letter-container {
     display: none;
-    position:fixed;
+    position: fixed;
     inset: 0;
     justify-content: center;
     align-items: center;
+    padding: 10px;
 }
 
-.letter-window{
+.letter-window {
     width: 90vw;
     max-width: 800px;
     aspect-ratio: 3/2;
-    padding: 20px 20px 0 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -57,8 +55,7 @@ body {
     background-position: center;
     border-radius: 12px;
     gap: 1px;
-    padding-top: 180px;
-
+    padding-top: 25%;
     transform: scale(1.2);
     opacity: 0;
     transition: transform 0.6s ease, opacity 0.6s ease;
@@ -70,49 +67,52 @@ body {
 }
 
 h1 {
-    font-size: 30px;
-    margin:0;
+    font-size: 5vw;
+    margin: 0;
 }
 
 p {
-    font-size: 40px;
+    font-size: 8vw;
 }
 
-/* Cat */
-
+/* ===== Cat ===== */
 .cat {
-    width: 250px;
+    width: 40%;
+    max-width: 250px;
     margin: 10px 0;
     transition: width 0.4s ease;
 }
 
 .letter-window.final .cat {
-    width: 180px;
+    width: 30%;
+    max-width: 180px;
 }
 
-/* buttons */
+/* ===== Buttons ===== */
 .buttons {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 5vw;
+    flex-wrap: wrap;
     position: relative;
 }
 
-.no-wrapper{
-    position:relative;
+.no-wrapper {
+    position: relative;
 }
 
 .btn {
     width: 120px;
+    max-width: 30vw;
     cursor: pointer;
     user-select: none;
 }
 
 .yes-btn,
 .no-btn {
-width: 120px;
-height: auto;
-display: inline-block;
+    width: 120px;
+    height: auto;
+    display: inline-block;
 }
 
 .yes-btn {
@@ -129,12 +129,87 @@ display: inline-block;
     cursor: default;
 }
 
-.final-text{
-    font-size: 22px;
+/* ===== Final Text ===== */
+.final-text {
+    font-size: 4vw;
     line-height: 1.4;
     text-align: center;
     display: inline-block;
-    padding: 10px 20px;
-    background-color: rgba(255,240,240,0.5);
+    padding: 2vw 4vw;
+    background-color: rgba(255, 240, 240, 0.5);
     border-radius: 12px;
+}
+
+/* ===== Media Queries for Small Devices ===== */
+@media (max-width: 600px) {
+    #envelope {
+        width: 35vw;
+    }
+
+    .letter-window {
+        padding-top: 30%;
+        gap: 0.5rem;
+    }
+
+    h1 {
+        font-size: 7vw;
+    }
+
+    p {
+        font-size: 10vw;
+    }
+
+    .cat {
+        width: 50%;
+        max-width: 180px;
+    }
+
+    .btn {
+        width: 40vw;
+    }
+
+    .buttons {
+        gap: 3vw;
+    }
+
+    .final-text {
+        font-size: 5vw;
+        padding: 4vw 6vw;
+    }
+}
+
+@media (max-width: 480px) {
+    #envelope {
+        width: 50vw;
+    }
+
+    .letter-window {
+        padding-top: 35%;
+    }
+
+    h1 {
+        font-size: 8vw;
+    }
+
+    p {
+        font-size: 12vw;
+    }
+
+    .cat {
+        width: 60%;
+        max-width: 160px;
+    }
+
+    .btn {
+        width: 45vw;
+    }
+
+    .buttons {
+        gap: 2vw;
+    }
+
+    .final-text {
+        font-size: 6vw;
+        padding: 5vw 6vw;
+    }
 }
